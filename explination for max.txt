@@ -1,0 +1,18 @@
+I'll try to explain what most of this does since there's not much commenting
+
+Few things to know, steam accounts have a normal vanity Id such as id/n0rmie or 76561198185719311
+
+64.txt <-- stores processed steam accounts 64 in the format 64ID/VANITY_URL this is to easily view what accounts is which the / VANITY_ID is only useful for those using it
+default.txt <-- When using the program you can give it a way to sort the type of columb e.g. sort by days, name or ban type, this just sets the default if you don't give it anything.
+id.txt <-- puts vanity IDs you want to be processed here, the program will look them up, convert to 64 Id and and store them in 64.txt and delete them.
+log.txt <-- Just not fully working because it's useless now but it was for logging what the program was doing until it errored.
+
+__pycache__ <-- Ignore this
+
+The python files are used for different functions that are imported as modules by their given name, steamban is the main file.
+
+accountInformation.py <-- contains gatherAccountInformation which processes the 64 Ids given to it and returns a large array with all the account information
+manageFiles.py <-- contains mangeFilesVanityIDs, this reads the steam 64 Ids and converts it to an array and tidies it up, and readConvert this takes the 64 Id file and takes away the / and vanityId information to just get a 64 Id array
+vanityResolver.py <-- contains vanityIdResolver, this uses the steam api to convert from vanity Id to 64 Id, mergeArrays tidies and merges array into one large 64 Id array
+
+steamBan.py <-- Logs everything, processes steamIds and cleans files, then sorts and processes for output using everything
